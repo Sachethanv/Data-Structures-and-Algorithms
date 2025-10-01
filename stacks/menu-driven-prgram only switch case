@@ -1,0 +1,77 @@
+#include<stdio.h>
+
+
+int push(int val ,int *top,int arr[]);
+int pop(int arr[],int *top);
+int peek(int arr[],int *top);
+int disp(int arr[], int top);
+
+
+
+int push(int val ,int *top,int arr[])
+{
+    *top = *top+1;
+    arr[*top] = val;
+    return arr[*top];
+
+}
+
+int pop(int arr[],int *top)
+{
+    int del = arr[*top];
+    *top = *top -1;
+    return del;
+}
+
+int peek(int arr[],int *top)
+{
+    int peek = arr[*top];
+    return peek;
+}
+
+int disp(int arr[],int top)
+{
+    for(int i =0;i<=top;i++)
+    {
+        printf("%d\t",arr[i]);
+    }
+}
+
+
+int main()
+{
+    int arr[5],ele,val,top = -1,del;
+    
+    while(1){
+    printf("\nDo u want to 1.push 2.pop 3.peek 4.display\n");
+    scanf("%d",&ele);
+    
+    switch(ele){
+        case 1:
+            printf("What value do u wanna add?\n");
+            scanf("%d",&val);
+            push(val,&top,arr);
+            
+            printf("The stack elemts now are:\n");
+            for(int i = 0;i<=top;i++)
+            {
+                printf("%d\t",arr[i]);
+            }
+            break;
+            
+        case 2:
+            int deleted = pop(arr, &top);
+            printf("The popped value is %d\n", deleted);
+            break;
+            
+        case 3:
+            int peeked = peek(arr,&top);
+            printf("The Top values is %d\n",peeked);
+            break;
+        
+        case 4:
+            disp(arr,top);
+            break;
+    }
+    }
+}
