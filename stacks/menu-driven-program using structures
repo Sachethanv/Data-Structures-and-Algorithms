@@ -1,0 +1,70 @@
+#include<stdio.h>
+
+struct stack{
+    int arr[5];
+    int top;
+};
+int push(struct stack *s,int val);
+int pop(struct stack *s);
+int peek(struct stack *s);
+
+int push(struct stack *s, int val)
+{
+    
+
+    s->top = s->top + 1;
+    s->arr[s->top] = val;
+    printf("%d pushed into the stack.\n", val);
+}
+
+int pop(struct stack *s)
+{
+    int del = s->arr[s->top];
+    s->top = s->top -1;
+    printf("%d removed from stack.\n",del);
+}
+
+int peek(struct stack *s)
+{
+   int peekval = s->arr[s->top];
+   printf("Value at the top of stack is = %d",peekval);
+}
+
+
+int main(){
+    struct stack s;
+    s.top = -1;
+    int ele,val;
+    while(1){
+    printf("\nDo u want to 1.push 2.pop 3.peek \n");
+    scanf("%d",&ele);
+    
+    switch(ele){
+        case 1:
+            if(s.top == 4){   // stack is full
+                printf("Stack is full. Cannot add more elements.\n");
+            return 0;        // just return, don't stop the program
+            }
+            printf("What value do u wanna add?\n");
+            scanf("%d",&val);
+            push(&s, val);
+            
+            printf("The stack elemts now are:\n");
+            for(int i = 0;i<=s.top;i++)
+            {
+                printf("%d\t",s.arr[i]);
+            }
+            break;
+           
+        case 2:
+            pop(&s);
+            break; 
+        
+        case 3:
+            peek(&s);
+            break;
+            
+            
+    }
+    }
+}
