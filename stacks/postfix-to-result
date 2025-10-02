@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <ctype.h>
+#include <math.h> // for pow()
+
+#define MAX 100
+
+int main() {
+    char postfix[MAX];
+    int stack[MAX];
+    int top = -1;
+
+    printf("Enter postfix expression: ");
+    scanf("%s", postfix);
+
+    for(int i = 0; postfix[i] != '\0'; i++) {
+        char c = postfix[i];
+
+        if(isdigit(c)) { // Operand
+            stack[++top] = c - '0'; // Convert char to int and push
+        } else { // Operator
+            int b = stack[top--]; // Pop second operand
+            int a = stack[top--]; // Pop first operand
+            int res;
+            
+            //basically above the numbers get loaded onto stack say 7 9 the we encounter a "+",so then we go back to stack and cureent pointer 9 is b and a is 7 and stored in res, which is pushed back to tsack
+
+            switch(c) {
+                case '+': res = a + b; break;
+                case '-': res = a - b; break;
+                case '*': res = a * b; break;
+                case '/': res = a / b; break;
+                case '%': res = a % b; break;
+                case '^': res = pow(a, b); break; // Handle power
+            }
+
+            stack[++top] = res; // Push result back
+        }
+    }
+
+    printf("Result: %d\n", stack[top]);
+    return 0;
+}
