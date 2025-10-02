@@ -1,0 +1,67 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+#define MAX 100
+
+// Function to return precedence of operators
+int precedence(char op) {
+    switch(op) {
+        case '^': return 3;
+        case '*':
+        case '/':
+        case '%': return 2;
+        case '+':
+        case '-': return 1;
+        default: return 0;
+    }
+}
+
+// Function to check if operator is right-associative
+int isRightAssociative(char op) {
+    return op == '^';
+}
+
+int main() {
+    char infix[MAX], postfix[MAX], stack[MAX];
+    int k = 0, top = -1;
+
+    printf("Enter the infix expression: "); // e.g., (a+b)*c
+    scanf("%s", infix);
+
+    int len = strlen(infix);
+
+    for(int i = 0; i < len; i++) {
+        char c = infix[i];
+
+        if(isalnum(c)) { // Operand
+            postfix[k++] = c;
+        }
+        else if(c == '(') { // Left parenthesis
+            stack[++top] = c;
+        }
+        else if(c == ')') { // Right parenthesis
+            while(top != -1 && stack[top] != '(')
+                postfix[k++] = stack[top--];
+            if(top != -1) top--; // pop '('
+        }
+        else { // Operator
+            while(top != -1 && stack[top] != '(' &&
+                  ((precedence(stack[top]) > precedence(c)) ||
+                  (precedence(stack[top]) == precedence(c) && !isRightAssociative(c)))) {
+                postfix[k++] = stack[top--];
+            }
+            stack[++top] = c; // push current operator
+        }
+    }
+
+    // Pop remaining operators
+    while(top != -1)
+        postfix[k++] = stack[top--];
+
+    postfix[k] = '\0'; // null-terminate string
+
+    printf("Postfix expression: %s\n", postfix);
+
+    return 0;
+}
