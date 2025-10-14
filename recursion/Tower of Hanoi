@@ -10,7 +10,7 @@ void towerOfHanoi(int n, char source, char dest, char aux) {
     towerOfHanoi(n - 1, source, aux, dest);
 
     // Move largest disk to destination
-    printf("Move disk %d from %c to %c\n", n, source, dest);
+    printf("Move disk %d from %c to %c\n", n, source, dest);//i have revued your code its nice 
 
     // Move n-1 disks from auxiliary → destination
     towerOfHanoi(n - 1, aux, dest, source);
