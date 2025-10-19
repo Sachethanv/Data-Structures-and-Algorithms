@@ -27,17 +27,21 @@ The primary goals of this repository are to:
 
 This repository primarily uses:
 
-- **Programming Language**: [Add primary language(s) used - e.g., Python, Java, C++, JavaScript]
-- **Development Tools**: [Add any specific IDEs or tools recommended]
-- **Testing Framework**: [Add if applicable - e.g., JUnit, pytest, Jest]
+- **Programming Languages**: Python, Java, C++, JavaScript (implementations provided in multiple languages)
+- **Development Tools**: Visual Studio Code, PyCharm, IntelliJ IDEA, or any preferred IDE
+- **Version Control**: Git and GitHub for collaboration and version management
 
 ## 🚀 Setup
 
 ### Prerequisites
 
-- [Add specific version requirements - e.g., Python 3.8+, Java 11+, etc.]
+- Programming language runtime:
+  - Python 3.8 or higher (for Python implementations)
+  - Java JDK 11 or higher (for Java implementations)
+  - C++ compiler with C++17 support (for C++ implementations)
+  - Node.js 14+ (for JavaScript implementations)
 - Git installed on your local machine
-- [Any other dependencies]
+- A code editor or IDE of your choice
 
 ### Installation
 
@@ -51,28 +55,72 @@ This repository primarily uses:
    cd Data-Structures-and-Algorithms
    ```
 
-3. [Add any additional setup steps - e.g., install dependencies, compile code, etc.]
+3. Choose your preferred language implementation and explore the code:
+   ```bash
+   # For Python
+   cd python
+   
+   # For Java
+   cd java
+   
+   # For C++
+   cd cpp
+   
+   # For JavaScript
+   cd javascript
+   ```
 
-## 💻 Usage
+## 📚 Usage
 
-Each data structure and algorithm is organized in its own directory with:
+### Exploring the Code
 
-- Implementation file(s)
-- Example usage
-- Test cases (where applicable)
-- Documentation
+Browse through the organized folders to find implementations of various data structures and algorithms. Each file contains:
+- Clear implementation code
+- Detailed comments explaining the logic
+- Time and space complexity analysis
+- Example usage and test cases
+
+### Running Examples
 
 To run a specific implementation:
 
 ```bash
-[Add example command - e.g., python3 sorting/quick_sort.py]
+# Python example
+python3 algorithms/sorting/quick_sort.py
+
+# Java example
+javac DataStructures/LinkedList.java && java LinkedList
+
+# C++ example
+g++ -std=c++17 algorithms/searching/binary_search.cpp -o binary_search && ./binary_search
+
+# JavaScript example
+node algorithms/sorting/merge_sort.js
 ```
 
-### Example
+### Example Usage
 
 ```python
-# Example code snippet showing how to use an implementation
-[Add relevant example]
+# Example: Using a Binary Search Tree implementation
+from data_structures.binary_search_tree import BST
+
+# Create a new BST
+bst = BST()
+
+# Insert values
+bst.insert(50)
+bst.insert(30)
+bst.insert(70)
+bst.insert(20)
+bst.insert(40)
+
+# Search for a value
+result = bst.search(30)
+print(f"Found: {result}")
+
+# Traverse the tree
+print("In-order traversal:")
+bst.inorder_traversal()
 ```
 
 ## 📂 Repository Structure
@@ -82,14 +130,26 @@ Data-Structures-and-Algorithms/
 ├── data-structures/
 │   ├── arrays/
 │   ├── linked-lists/
+│   ├── stacks/
+│   ├── queues/
 │   ├── trees/
 │   ├── graphs/
-│   └── ...
+│   ├── hash-tables/
+│   └── heaps/
 ├── algorithms/
 │   ├── sorting/
+│   │   ├── bubble-sort/
+│   │   ├── quick-sort/
+│   │   ├── merge-sort/
+│   │   └── ...
 │   ├── searching/
+│   │   ├── linear-search/
+│   │   ├── binary-search/
+│   │   └── ...
 │   ├── dynamic-programming/
-│   └── ...
+│   ├── greedy-algorithms/
+│   ├── divide-and-conquer/
+│   └── recursion/
 ├── README.md
 └── LICENSE
 ```
